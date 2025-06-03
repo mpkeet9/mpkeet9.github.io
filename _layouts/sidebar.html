@@ -2,8 +2,38 @@
 layout: default
 ---
 
-<div style="display: flex; min-height: 100vh;">
-  <nav style="width: 220px; background: #f5f6fa; padding: 1.5em 1em;">
+<style>
+  .sidebar-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    background: #f5f6fa;
+    padding: 1.5em 1em;
+    box-sizing: border-box;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+  .sidebar-main {
+    margin-left: 220px;
+    padding: 2em;
+  }
+  @media (max-width: 700px) {
+    .sidebar-nav {
+      position: static;
+      width: 100%;
+      height: auto;
+    }
+    .sidebar-main {
+      margin-left: 0;
+      padding: 1em;
+    }
+  }
+</style>
+
+<div>
+  <nav class="sidebar-nav">
     <h3>Menu</h3>
     <ul style="list-style: none; padding: 0;">
       <li><a href="{{ '/' | relative_url }}">Home</a></li>
@@ -12,7 +42,7 @@ layout: default
       <!-- Add more links as needed -->
     </ul>
   </nav>
-  <main style="flex: 1; padding: 2em;">
+  <main class="sidebar-main">
     {{ content }}
   </main>
 </div>
