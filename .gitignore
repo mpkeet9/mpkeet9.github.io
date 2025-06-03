@@ -192,3 +192,18 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+.DS_Store
+/_site
+vendor/
+assets/vendor/jquery/build
+assets/vendor/jquery/speed
+assets/vendor/jquery/src
+assets/vendor/jquery/test
+assets/vendor/octicons/svg
+assets/vendor/**/*.md
+assets/vendor/**/*.txt
+assets/vendor/bootstrap-sass/assets/javascripts/
+.sass-cache
+.env
+.jekyll-metadata
+tmp/
