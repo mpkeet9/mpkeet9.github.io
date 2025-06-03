@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+<div style="display: flex; min-height: 100vh;">
+  <nav style="width: 220px; background: #f5f6fa; padding: 1.5em 1em;">
+    <h3>Menu</h3>
+    <ul style="list-style: none; padding: 0;">
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      <li><a href="{{ '/page1.html' | relative_url }}">Page 1</a></li>
+      <li><a href="{{ '/page2.html' | relative_url }}">Page 2</a></li>
+      <!-- Add more links as needed -->
+    </ul>
+  </nav>
+  <main style="flex: 1; padding: 2em;">
+    {{ content }}
+  </main>
+</div>
