@@ -3,9 +3,19 @@ layout: default
 ---
 
 <style>
-  .sidebar-layout-container {
+  /* Remove Cayman theme's default padding on main-content and its parent */
+  .main-content,
+  .container-lg {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  /* Target Cayman theme's main content area */
+  .main-content {
     display: flex;
-    min-height: 100vh;
+    flex-direction: row;
+    min-height: 100vh; /* Ensure it fills the viewport height */
+    margin-top: 0;
+    padding-top: 0;
   }
   .sidebar-nav {
     width: 220px;
@@ -13,32 +23,45 @@ layout: default
     padding: 1.5em 1em;
     box-sizing: border-box;
     overflow-y: auto;
+    margin: 0;
+    border-right: 1px solid #e1e4e8;
   }
   .sidebar-main {
-    flex: 1;
+    flex: 1 1 0;
+    width: 100%;
     padding: 2em;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height: auto; /* Let flexbox control the height */
+  }
+  .center-content {
+    /* Remove max-width and width for autofill */
+    text-align: center;
   }
   @media (max-width: 700px) {
-    .sidebar-layout-container {
+    .main-content {
       flex-direction: column;
+      min-height: 0;
     }
     .sidebar-nav {
       width: 100%;
+      border-right: none;
+      border-bottom: 1px solid #e1e4e8;
       padding: 1em;
     }
     .sidebar-main {
       padding: 1em;
+      height: auto;
+      align-items: stretch;
+      justify-content: flex-start;
     }
   }
 </style>
 
-<!-- Site header (title and description) -->
-<header style="padding: 2em 1em 1em 1em; background: #fff;">
-  <h1 style="margin-bottom: 0.2em;">{{ site.title }}</h1>
-  <p style="margin-top: 0; color: #666;">{{ site.description }}</p>
-</header>
-
-<div class="sidebar-layout-container">
+<div class="main-content">
   <nav class="sidebar-nav">
     <h3>Menu</h3>
     <ul style="list-style: none; padding: 0;">
