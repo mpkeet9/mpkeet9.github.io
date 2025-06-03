@@ -3,36 +3,42 @@ layout: default
 ---
 
 <style>
+  .sidebar-layout-container {
+    display: flex;
+    min-height: 100vh;
+  }
   .sidebar-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 220px;
-    height: 100vh;
     background: #f5f6fa;
     padding: 1.5em 1em;
     box-sizing: border-box;
     overflow-y: auto;
-    z-index: 1000;
   }
   .sidebar-main {
-    margin-left: 220px;
+    flex: 1;
     padding: 2em;
   }
   @media (max-width: 700px) {
+    .sidebar-layout-container {
+      flex-direction: column;
+    }
     .sidebar-nav {
-      position: static;
       width: 100%;
-      height: auto;
+      padding: 1em;
     }
     .sidebar-main {
-      margin-left: 0;
       padding: 1em;
     }
   }
 </style>
 
-<div>
+<!-- Site header (title and description) -->
+<header style="padding: 2em 1em 1em 1em; background: #fff;">
+  <h1 style="margin-bottom: 0.2em;">{{ site.title }}</h1>
+  <p style="margin-top: 0; color: #666;">{{ site.description }}</p>
+</header>
+
+<div class="sidebar-layout-container">
   <nav class="sidebar-nav">
     <h3>Menu</h3>
     <ul style="list-style: none; padding: 0;">
