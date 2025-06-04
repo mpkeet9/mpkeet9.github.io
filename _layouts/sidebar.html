@@ -8,6 +8,8 @@ layout: default
   .container-lg {
     margin-left: 0 !important;
     padding-left: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
   }
   /* Target Cayman theme's main content area */
   .main-content {
@@ -18,28 +20,66 @@ layout: default
     padding-top: 0;
   }
   .sidebar-nav {
-    width: 220px;
+    /* Remove fixed width and use min-width for flexibility */
+    min-width: 180px;
+    max-width: 350px;
     background: #f5f6fa;
-    padding: 1.5em 1em;
+    padding: 1.5em 2em 1.5em 1em; /* Increase right padding from 1em to 2em */
     box-sizing: border-box;
     overflow-y: auto;
     margin: 0;
     border-right: 1px solid #e1e4e8;
+    width: auto; /* Allow width to be determined by content */
+    white-space: normal; /* Allow text to wrap */
+    word-break: break-word;
+  }
+  .sidebar-nav ul > li {
+    margin-bottom: 0.6em; /* Space between top-level items */
+  }
+  .sidebar-nav ul ul {
+    margin-top: 0.6em; /* Add space above children group */
+  }
+  .sidebar-nav ul ul > li {
+    margin-bottom: 0.4em; /* Space between sub-items */
+  }
+  .sidebar-nav .collapse-toggle {
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 0.3em;
+    margin-right: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.85em;
+    color: #155799;
+    vertical-align: middle;
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+  .sidebar-nav li.open > .collapse-toggle {
+    transform: rotate(90deg);
+  }
+  .sidebar-nav ul ul {
+    display: none;
+  }
+  .sidebar-nav li.open > ul {
+    display: block;
   }
   .sidebar-main {
     flex: 1 1 0;
     width: 100%;
-    padding: 2em;
+    padding: 2em; /* Remove left padding */
     min-width: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
     box-sizing: border-box;
-    height: auto; /* Let flexbox control the height */
+    height: auto;
+    margin-top: 0;
   }
   .center-content {
-    /* Remove max-width and width for autofill */
     text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
   }
   @media (max-width: 700px) {
     .main-content {
@@ -59,16 +99,24 @@ layout: default
       justify-content: flex-start;
     }
   }
+  .site-footer {
+    display: none !important;
+  }
+  .sidebar-nav a,
+  .sidebar-nav .menu-parent-toggle span {
+    color: #155799;
+    font-size: inherit;
+    font-weight: inherit;
+    text-decoration: none;
+  }
 </style>
 
 <div class="main-content">
   <nav class="sidebar-nav">
-    <h3>Menu</h3>
+    <h1>Menu</h1>
     <ul style="list-style: none; padding: 0;">
-      <li><a href="{{ '/' | relative_url }}">Home</a></li>
-      <li><a href="{{ '/page1.html' | relative_url }}">Page 1</a></li>
-      <li><a href="{{ '/page2.html' | relative_url }}">Page 2</a></li>
-      <!-- Add more links as needed -->
+      {% assign nav_items = site.data.navigation %}
+      {% include sidebar-nav-items.html items=nav_items %}
     </ul>
   </nav>
   <main class="sidebar-main">

@@ -1,0 +1,21 @@
+{% for item in include.items %}
+  <li{% if item.children %} class="has-children"{% endif %}>
+    {% if item.children %}
+      <span class="menu-parent-toggle" style="cursor:pointer;display:inline-flex;align-items:center;" onclick="this.parentNode.classList.toggle('open');event.stopPropagation();">
+        {% if item.url %}
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+        {% else %}
+          <span>{{ item.title }}</span>
+        {% endif %}
+        <button class="collapse-toggle" aria-label="Toggle submenu" tabindex="-1" style="background:none;border:none;padding:0;margin-left:0.3em;font-size:0.85em;color:#155799;">&gt;</button>
+      </span>
+    {% else %}
+      <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+    {% endif %}
+    {% if item.children %}
+      <ul style="list-style: none; padding-left: 1em;">
+        {% include sidebar-nav-items.html items=item.children %}
+      </ul>
+    {% endif %}
+  </li>
+{% endfor %}

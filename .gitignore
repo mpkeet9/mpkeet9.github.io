@@ -207,3 +207,6 @@ assets/vendor/bootstrap-sass/assets/javascripts/
 .env
 .jekyll-metadata
 tmp/
+.bundle/
+Gemfile
+Gemfile.lock

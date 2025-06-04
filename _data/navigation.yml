@@ -1,0 +1,24 @@
+- title: Home
+  url: /
+- title: CSP Specific Info
+  children:
+    - title: Google Cloud
+      url: /cloud-providers/gcp.html
+    - title: Azure
+      children:
+        - title: Azure Private Link
+          children:
+            - title: Do I Need Private Link?
+              url: /cloud-providers/azure/private-link/private-link-decision-guide.html
+            - title: Generic Private Link Setup
+              url: /cloud-providers/azure/private-link/azure-private-link-generic.html
+            - title: ADF & Synapse Private Link Setup
+              url: /cloud-providers/azure/private-link/azure-private-link-adf-synapse.html
+    - title: AWS
+      url: /cloud-providers/aws.html
+- title: Data Sharing
+  url: /data-sharing.html
+- title: Networking
+  url: /networking.html
+- title: Security
+  url: /security.html
